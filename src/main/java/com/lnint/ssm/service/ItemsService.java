@@ -2,6 +2,7 @@ package com.lnint.ssm.service;
 
 import java.util.List;
 
+import com.lnint.ssm.po.Items;
 import com.lnint.ssm.po.ItemsCustom;
 import com.lnint.ssm.po.ItemsQueryVo;
 
@@ -34,8 +35,8 @@ public interface ItemsService {
 	 * <p>Title: updateItems</p>
 	 * <p>Description: </p>
 	 * @param id 修改商品的id
-	 * @param itemsCustom 修改的商品信息
+	 * @param items 修改的商品信息
 	 * @throws Exception
 	 */
-	public void updateItems(String id,ItemsCustom itemsCustom) throws Exception;
+	public void updateItems(String id,Items items) throws Exception;
 }

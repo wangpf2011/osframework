@@ -10,6 +10,9 @@ public class Orderdetail extends DataEntity<Orderdetail> {
     private String itemsId;
 
     private Integer itemsNum;
+    
+    //明细对应的商品信息
+    private Items items;
 
     public String getOrdersId() {
         return ordersId;
@@ -34,4 +37,12 @@ public class Orderdetail extends DataEntity<Orderdetail> {
     public void setItemsNum(Integer itemsNum) {
         this.itemsNum = itemsNum;
     }
+    
+    public Items getItems() {
+		return items;
+	}
+
+	public void setItems(Items items) {
+		this.items = items;
+	}
 }

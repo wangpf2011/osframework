@@ -1,6 +1,7 @@
 package com.lnint.ssm.po;
 
 import java.util.Date;
+import java.util.List;
 
 import com.lnint.ssm.common.persistence.DataEntity;
 
@@ -15,6 +16,12 @@ public class Orders extends DataEntity<Orders> {
     private Date createtime;
 
     private String note;
+    
+    //用户信息
+    private User user;
+    
+    //订单明细
+    private List<Orderdetail> orderdetails;
 
     public String getUserId() {
         return userId;
@@ -47,4 +54,20 @@ public class Orders extends DataEntity<Orders> {
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
     }
+    
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Orderdetail> getOrderdetails() {
+		return orderdetails;
+	}
+
+	public void setOrderdetails(List<Orderdetail> orderdetails) {
+		this.orderdetails = orderdetails;
+	}
 }
