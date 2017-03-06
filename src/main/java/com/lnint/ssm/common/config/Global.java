@@ -16,6 +16,7 @@ import com.lnint.ssm.common.utils.StringUtils;
  * @version 2017-01-25
  */
 public class Global {
+	
 	/**
 	 * 当前对象实例 
 	 */
