@@ -44,7 +44,7 @@ import com.wf.ssm.service.ProductsService;
 public class ProductsController {
 
 	@Autowired
-	private ProductsService itemsService;
+	private ProductsService productsService;
 
 	// 商品分类
 	//itemtypes表示最终将方法返回值放在request中的key
@@ -59,17 +59,17 @@ public class ProductsController {
 	}
 
 	// 商品查询
-	@RequestMapping("/queryItems")
+	@RequestMapping("/queryProducts")
 	public ModelAndView queryItems(HttpServletRequest request,
-			ProductsQueryVo itemsQueryVo) throws Exception {
+			ProductsQueryVo productsQueryVo) throws Exception {
 		System.out.println(request.getParameter("id"));
 
 		// 调用service查找 数据库，查询商品列表
-		List<ProductsCustom> itemsList = itemsService.findProductsList(itemsQueryVo);
+		List<ProductsCustom> productsList = productsService.findProductsList(productsQueryVo);
 		// 返回ModelAndView
 		ModelAndView modelAndView = new ModelAndView();
-		// 相当 于request的setAttribut，在jsp页面中通过itemsList取数据
-		modelAndView.addObject("itemsList", itemsList);
+		// 相当 于request的setAttribut，在jsp页面中通过productsList取数据
+		modelAndView.addObject("productsList", productsList);
 
 		// 指定视图
 		// 路径配置时，如果未在程序中指定jsp路径的前缀和jsp路径的后缀
@@ -81,7 +81,7 @@ public class ProductsController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/editItems", method = { RequestMethod.POST,
+	@RequestMapping(value = "/editProducts", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	// @RequestParam里边指定request传入参数名称和形参进行绑定。
 	// 通过required属性指定参数是否必须要传入
@@ -90,7 +90,7 @@ public class ProductsController {
 			@RequestParam(value = "id", required = true) String items_id)
 			throws Exception {
 		// 调用service根据商品id查询商品信息
-		Products products = itemsService.findProductsById(items_id);
+		Products products = productsService.findProductsById(items_id);
 		//判断商品是否为空，根据id没有查询到商品，抛出异常，提示用户商品信息不存 在
 		if(products == null){
 			throw new CustomException("修改的商品信息不存在!");
@@ -108,7 +108,7 @@ public class ProductsController {
 	@RequestMapping("/itemsView/{id}")
 	public @ResponseBody Products itemsView(@PathVariable("id") String id)throws Exception{
 		//调用service查询商品信息
-		Products products = itemsService.findProductsById(id);
+		Products products = productsService.findProductsById(id);
 		
 		return products;
 	}
@@ -165,7 +165,7 @@ public class ProductsController {
 		}
 
 		// 调用service更新商品信息，页面需要将商品信息传到此方法
-		itemsService.updateProducts(id, products);
+		productsService.updateProducts(id, products);
 
 		// 重定向到商品查询列表
 		// return "redirect:queryItems.action";
@@ -188,7 +188,7 @@ public class ProductsController {
 			ProductsQueryVo itemsQueryVo) throws Exception {
 
 		// 调用service查找 数据库，查询商品列表
-		List<ProductsCustom> itemsList = itemsService.findProductsList(itemsQueryVo);
+		List<ProductsCustom> itemsList = productsService.findProductsList(itemsQueryVo);
 
 		// 返回ModelAndView
 		ModelAndView modelAndView = new ModelAndView();
