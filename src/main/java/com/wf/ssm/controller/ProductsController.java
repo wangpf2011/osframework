@@ -127,10 +127,10 @@ public class ProductsController {
 			MultipartFile items_pic) throws Exception {
 
 		// 获取校验错误信息
-		if (bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors()) {
 			// 输出错误信息
 			List<ObjectError> allErrors = bindingResult.getAllErrors();
-			for (ObjectError objectError : allErrors) {
+			for(ObjectError objectError : allErrors) {
 				// 输出错误信息
 				System.out.println(objectError.getDefaultMessage());
 			}
