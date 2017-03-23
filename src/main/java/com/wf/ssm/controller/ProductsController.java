@@ -31,11 +31,11 @@ import com.wf.ssm.po.ProductsQueryVo;
 import com.wf.ssm.service.ProductsService;
 
 /**
- * <p>
- * Description:商品的controller
- * </p>
+ * <P>商品的controller</P>
+ * 
+ * @version 1.0
  * @author wangpf
- * @version 2017-01-15
+ * @date 2017年3月23日 下午8:38:35
  */
 @Controller
 // 为了对url进行分类管理 ，可以在这里定义根路径，最终访问url是根路径+子路径
@@ -47,15 +47,14 @@ public class ProductsController {
 	private ProductsService productsService;
 
 	// 商品分类
-	//itemtypes表示最终将方法返回值放在request中的key
-	@ModelAttribute("itemtypes")
-	public Map<String, String> getItemTypes() {
+	//productstypes表示最终将方法返回值放在request中的key
+	@ModelAttribute("productstypes")
+	public Map<String, String> getProductsTypes() {
+		Map<String, String> productsTypes = new HashMap<String, String>();
+		productsTypes.put("101", "数码");
+		productsTypes.put("102", "母婴");
 
-		Map<String, String> itemTypes = new HashMap<String, String>();
-		itemTypes.put("101", "数码");
-		itemTypes.put("102", "母婴");
-
-		return itemTypes;
+		return productsTypes;
 	}
 
 	// 商品查询
@@ -76,7 +75,7 @@ public class ProductsController {
 		// modelAndView.setViewName("/WEB-INF/jsp/products/itemsList.jsp");
 		// 如果在视图解析器中配置jsp路径的前缀和jsp路径的后缀，修改为
 		// modelAndView.setViewName("products/itemsList");
-		modelAndView.setViewName("products/itemsList");
+		modelAndView.setViewName("products/productsList");
 
 		return modelAndView;
 	}
@@ -86,7 +85,7 @@ public class ProductsController {
 	// @RequestParam里边指定request传入参数名称和形参进行绑定。
 	// 通过required属性指定参数是否必须要传入
 	// 通过defaultValue可以设置默认值，如果id参数没有传入，将默认值和形参绑定。
-	public String editItems(Model model,
+	public String editProducts(Model model,
 			@RequestParam(value = "id", required = true) String items_id)
 			throws Exception {
 		// 调用service根据商品id查询商品信息
@@ -99,17 +98,16 @@ public class ProductsController {
 		// 通过形参中的model将model数据传到页面
 		// 相当于modelAndView.addObject方法
 		model.addAttribute("products", products);
-		return "products/editItems";
+		return "products/productsForm";
 	}
 	
 	//查询商品信息，输出json
 	///itemsView/{id}里边的{id}表示占位符，通过@PathVariable获取占位符中的参数，
 	//如果占位符中的名称和形参名一致，在@PathVariable可以不指定名称
-	@RequestMapping("/itemsView/{id}")
-	public @ResponseBody Products itemsView(@PathVariable("id") String id)throws Exception{
+	@RequestMapping("/productsView/{id}")
+	public @ResponseBody Products productsView(@PathVariable("id") String id)throws Exception{
 		//调用service查询商品信息
 		Products products = productsService.findProductsById(id);
-		
 		return products;
 	}
 
@@ -119,8 +117,8 @@ public class ProductsController {
 	// 注意：@Validated和BindingResult bindingResult是配对出现，并且形参顺序是固定的（一前一后）。
 	// value={ValidGroup1.class}指定使用ValidGroup1分组的 校验
 	// @ModelAttribute可以指定pojo回显到页面在request中的key
-	@RequestMapping("/editItemsSubmit")
-	public String editItemsSubmit(
+	@RequestMapping("/editProductsSubmit")
+	public String editProductsSubmit(
 			Model model,
 			HttpServletRequest request,
 			String id,
@@ -144,7 +142,7 @@ public class ProductsController {
 			model.addAttribute("products", products);
 			
 			// 出错重新到商品修改页面
-			return "products/editItems";
+			return "products/productsForm";
 		}
 		//原始名称
 		String originalFilename = items_pic.getOriginalFilename();
@@ -175,34 +173,34 @@ public class ProductsController {
 	}
 
 	// 批量删除 商品信息
-	@RequestMapping("/deleteItems")
-	public String deleteItems(Integer[] items_id) throws Exception {
+	@RequestMapping("/deleteProducts")
+	public String deleteProducts(Integer[] id) throws Exception {
 		// 调用service批量删除商品
 		// ...
 		return "success";
 	}
 
 	// 批量修改商品页面，将商品信息查询出来，在页面中可以编辑商品信息
-	@RequestMapping("/editItemsQuery")
-	public ModelAndView editItemsQuery(HttpServletRequest request,
-			ProductsQueryVo itemsQueryVo) throws Exception {
+	@RequestMapping("/editProductsQuery")
+	public ModelAndView editProductsQuery(HttpServletRequest request,
+			ProductsQueryVo productsQueryVo) throws Exception {
 
 		// 调用service查找 数据库，查询商品列表
-		List<ProductsCustom> itemsList = productsService.findProductsList(itemsQueryVo);
+		List<ProductsCustom> productsList = productsService.findProductsList(productsQueryVo);
 
 		// 返回ModelAndView
 		ModelAndView modelAndView = new ModelAndView();
-		// 相当 于request的setAttribut，在jsp页面中通过itemsList取数据
-		modelAndView.addObject("itemsList", itemsList);
-		modelAndView.setViewName("products/editItemsQuery");
+		// 相当 于request的setAttribut，在jsp页面中通过productsList取数据
+		modelAndView.addObject("productsList", productsList);
+		modelAndView.setViewName("products/productsQuery");
 
 		return modelAndView;
 	}
 
 	// 批量修改商品提交
-	// 通过ItemsQueryVo接收批量提交的商品信息，将商品信息存储到itemsQueryVo中itemsList属性中。
-	@RequestMapping("/editItemsAllSubmit")
-	public String editItemsAllSubmit(ProductsQueryVo itemsQueryVo)
+	// 通过productsQueryVo接收批量提交的商品信息，将商品信息存储到productsQueryVo中itemsList属性中。
+	@RequestMapping("/editProductsAllSubmit")
+	public String editProductsAllSubmit(ProductsQueryVo productsQueryVo)
 			throws Exception {
 		return "success";
 	}

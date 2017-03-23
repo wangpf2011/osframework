@@ -4,25 +4,13 @@
   <resultMap id="BaseResultMap" type="com.wf.ssm.po.Orderdetail" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="orders_id" property="ordersId" jdbcType="VARCHAR" />
-    <result column="items_id" property="itemsId" jdbcType="VARCHAR" />
-    <result column="items_num" property="itemsNum" jdbcType="INTEGER" />
+    <result column="products_id" property="productsId" jdbcType="VARCHAR" />
+    <result column="products_num" property="productsNum" jdbcType="INTEGER" />
   </resultMap>
   
   <sql id="Base_Column_List" >
-    id, orders_id, items_id, items_num
+    id, orders_id, products_id, products_num
   </sql>
-  
-  <select id="get" resultMap="BaseResultMap" parameterType="com.wf.ssm.po.OrderdetailExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from orderdetail
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   
   <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -37,10 +25,9 @@
   </delete>
   
   <insert id="insert" parameterType="com.wf.ssm.po.Orderdetail" >
-    insert into orderdetail (id, orders_id, items_id, 
-      items_num)
-    values (#{id,jdbcType=VARCHAR}, #{ordersId,jdbcType=VARCHAR}, #{itemsId,jdbcType=VARCHAR}, 
-      #{itemsNum,jdbcType=INTEGER})
+    insert into orderdetail (id, orders_id, products_id, products_num)
+    values (#{id,jdbcType=VARCHAR}, #{ordersId,jdbcType=VARCHAR}, #{productsId,jdbcType=VARCHAR}, 
+      #{productsNum,jdbcType=INTEGER})
   </insert>
   
   <insert id="insertSelective" parameterType="com.wf.ssm.po.Orderdetail" >
@@ -52,11 +39,11 @@
       <if test="ordersId != null" >
         orders_id,
       </if>
-      <if test="itemsId != null" >
-        items_id,
+      <if test="productsId != null" >
+        products_id,
       </if>
-      <if test="itemsNum != null" >
-        items_num,
+      <if test="productsNum != null" >
+        products_num,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -67,10 +54,10 @@
         #{ordersId,jdbcType=VARCHAR},
       </if>
       <if test="itemsId != null" >
-        #{itemsId,jdbcType=VARCHAR},
+        #{productsId,jdbcType=VARCHAR},
       </if>
       <if test="itemsNum != null" >
-        #{itemsNum,jdbcType=INTEGER},
+        #{productsNum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -82,10 +69,10 @@
         orders_id = #{ordersId,jdbcType=VARCHAR},
       </if>
       <if test="itemsId != null" >
-        items_id = #{itemsId,jdbcType=VARCHAR},
+        products_id = #{productsId,jdbcType=VARCHAR},
       </if>
       <if test="itemsNum != null" >
-        items_num = #{itemsNum,jdbcType=INTEGER},
+        products_num = #{productsNum,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -94,8 +81,8 @@
   <update id="update" parameterType="com.wf.ssm.po.Orderdetail" >
     update orderdetail
     set orders_id = #{ordersId,jdbcType=VARCHAR},
-      items_id = #{itemsId,jdbcType=VARCHAR},
-      items_num = #{itemsNum,jdbcType=INTEGER}
+    products_id = #{productsId,jdbcType=VARCHAR},
+    products_num = #{productsNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
