@@ -18,7 +18,7 @@ public class LoginController {
 		// 在session中保存用户身份信息
 		session.setAttribute("username", username);
 		// 重定向到商品列表页面
-		return "redirect:/items/queryItems.action";
+		return "redirect:/products/queryProducts.action";
 	}
 
 	// 退出
@@ -28,7 +28,7 @@ public class LoginController {
 		session.invalidate();
 
 		// 重定向到商品列表页面
-		return "redirect:/items/queryItems.action";
+		return "redirect:/products/queryProducts.action";
 	}
 
 }
