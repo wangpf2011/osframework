@@ -44,12 +44,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<!-- 类型别名 -->
 	<typeAliases>
-		<typeAlias alias="Page" type="com.lnint.ssm.common.persistence.Page" /><!--分页  -->
+		<typeAlias alias="Page" type="com.wf.ssm.common.persistence.Page" /><!--分页  -->
 	</typeAliases>
 	
 	<!-- 插件配置 -->
 	<plugins>
-		<plugin interceptor="com.lnint.ssm.common.persistence.interceptor.PaginationInterceptor" />
+		<plugin interceptor="com.wf.ssm.common.persistence.interceptor.PaginationInterceptor" />
     </plugins>
 
 	<!-- 配置mapper

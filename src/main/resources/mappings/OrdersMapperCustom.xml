@@ -4,11 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 注意：使用mapper代理方法开发，namespace有特殊重要的作用，namespace等于mapper接口地址 -->
-<mapper namespace="com.lnint.ssm.mapper.OrdersMapperCustom">
+<mapper namespace="com.wf.ssm.mapper.OrdersMapperCustom">
 	<!-- 订单查询关联用户的resultMap
-	将整个查询的结果映射到com.lnint.ssm.po.Orders中
+	将整个查询的结果映射到com.wf.ssm.po.Orders中
 	 -->
-	<resultMap type="com.lnint.ssm.po.Orders" id="OrdersUserResultMap">
+	<resultMap type="com.wf.ssm.po.Orders" id="OrdersUserResultMap">
 		<!-- 配置映射的订单信息 -->
 		<!-- id：指定查询列中的唯 一标识，订单信息的中的唯 一标识，如果有多个列组成唯一标识，配置多个id
 			column：订单信息的唯 一标识 列
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- association：用于映射关联查询单个对象的信息
 		property：要将关联查询的用户信息映射到Orders中哪个属性
 		 -->
-		<association property="user"  javaType="com.lnint.ssm.po.User">
+		<association property="user"  javaType="com.wf.ssm.po.User">
 			<!-- id：关联查询用户的唯 一标识
 			column：指定唯 一标识用户信息的列
 			javaType：映射到user的哪个属性
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 订单及订单明细的resultMap
 	使用extends继承，不用在中配置订单信息和用户信息的映射
 	 -->
-	<resultMap type="com.lnint.ssm.po.Orders" id="OrdersAndOrderDetailResultMap" extends="OrdersUserResultMap">
+	<resultMap type="com.wf.ssm.po.Orders" id="OrdersAndOrderDetailResultMap" extends="OrdersUserResultMap">
 		<!-- 订单信息 -->
 		<!-- 用户信息 -->
 		<!-- 使用extends继承，不用在中配置订单信息和用户信息的映射 -->
@@ -48,12 +48,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- 订单明细信息
 		一个订单关联查询出了多条明细，要使用collection进行映射
 		collection：对关联查询到多条记录映射到集合对象中
-		property：将关联查询到多条记录映射到com.lnint.ssm.po.Orders哪个属性
+		property：将关联查询到多条记录映射到com.wf.ssm.po.Orders哪个属性
 		ofType：指定映射到list集合属性中pojo的类型
 		 -->
-		 <collection property="orderdetails" ofType="com.lnint.ssm.po.Orderdetail">
+		 <collection property="orderdetails" ofType="com.wf.ssm.po.Orderdetail">
 		 	<!-- id：订单明细唯 一标识
-		 	property:要将订单明细的唯 一标识 映射到com.lnint.ssm.po.Orderdetail的哪个属性
+		 	property:要将订单明细的唯 一标识 映射到com.wf.ssm.po.Orderdetail的哪个属性
 		 	  -->
 		 	<id column="orderdetail_id" property="id"/>
 		 	<result column="items_id" property="itemsId"/>
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<!-- 查询用户及购买的商品 -->
-	<resultMap type="com.lnint.ssm.po.User" id="UserAndItemsResultMap">
+	<resultMap type="com.wf.ssm.po.User" id="UserAndItemsResultMap">
 		<!-- 用户信息 -->
 		<id column="user_id" property="id"/>
 		<result column="username" property="username"/>
@@ -73,7 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- 订单信息
 		一个用户对应多个订单，使用collection映射
 		 -->
-		 <collection property="ordersList" ofType="com.lnint.ssm.po.Orders">
+		 <collection property="ordersList" ofType="com.wf.ssm.po.Orders">
 		 	<id column="id" property="id"/>
 		 	<result column="user_id" property="userId"/>
 			<result column="number" property="number"/>
@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 <!-- 订单明细
 			 一个订单包括 多个明细
 		  	-->
-		  	<collection property="orderdetails" ofType="com.lnint.ssm.po.Orderdetail">
+		  	<collection property="orderdetails" ofType="com.wf.ssm.po.Orderdetail">
 		  			<id column="orderdetail_id" property="id"/>
 				 	<result column="items_id" property="itemsId"/>
 				 	<result column="items_num" property="itemsNum"/>
@@ -92,7 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<!-- 商品信息
 		  		一个订单明细对应一个商品
 		  	 	-->
-		  	 	<association property="items" javaType="com.lnint.ssm.po.Items">
+		  	 	<association property="items" javaType="com.wf.ssm.po.Items">
 		  	 		<id column="items_id" property="id"/>
 		  	 		<result column="items_name" property="name"/>
 		  	 		<result column="items_detail" property="detail"/>
@@ -104,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查询订单关联查询用户信息 -->
 
-	<select id="findOrdersUser" resultType="com.lnint.ssm.po.OrdersCustom">
+	<select id="findOrdersUser" resultType="com.wf.ssm.po.OrdersCustom">
 		SELECT
 		orders.*,
 		USER.username,
@@ -171,7 +171,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 延迟加载的resultMap -->
-	<resultMap type="com.lnint.ssm.po.Orders" id="OrdersUserLazyLoadingResultMap">
+	<resultMap type="com.wf.ssm.po.Orders" id="OrdersUserLazyLoadingResultMap">
 			<!--对订单信息进行映射配置  -->
 			<id column="id" property="id"/>
 			<result column="user_id" property="userId"/>
@@ -188,8 +188,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	(SELECT sex FROM USER WHERE orders.user_id = user.id)sex
 	 FROM orders
 			 -->
-			<association property="user"  javaType="com.lnint.ssm.po.User"
-			 select="com.lnint.ssm.mapper.UserMapper.get" column="user_id">
+			<association property="user"  javaType="com.wf.ssm.po.User"
+			 select="com.wf.ssm.mapper.UserMapper.get" column="user_id">
 			<!-- 实现对用户信息进行延迟加载 -->
 		
 			</association>
