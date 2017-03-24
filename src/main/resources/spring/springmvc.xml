@@ -16,10 +16,11 @@
 	<!-- 可以扫描controller、service、...这里让扫描controller，指定controller的包 -->
 	<context:component-scan base-package="com.wf.ssm.controller"></context:component-scan>
 	
-	<!-- 静态资源解析，包括 ：js、css、img、.. -->
-	<mvc:resources location="/js/" mapping="/js/**"/>
-	<mvc:resources location="/img/" mapping="/img/**"/>
-		
+	<!-- 静态资源映射 
+    <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/>-->
+	<!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
+	<mvc:default-servlet-handler/>
+	
 	<!--注解映射器 -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
 	<!--注解适配器 -->

@@ -163,10 +163,7 @@ public class ProductsController {
 		productsService.updateProducts(id, products);
 
 		// 重定向到商品查询列表
-		// return "redirect:queryItems.action";
-		// 页面转发
-		// return "forward:queryItems.action";
-		return "success";
+		return "redirect:/products/queryProducts.action";
 	}
 
 	// 批量删除 商品信息
@@ -174,7 +171,7 @@ public class ProductsController {
 	public String deleteProducts(Integer[] id) throws Exception {
 		// 调用service批量删除商品
 		// ...
-		return "success";
+		return "redirect:/products/queryProducts.action";
 	}
 
 	// 批量修改商品页面，将商品信息查询出来，在页面中可以编辑商品信息
@@ -199,6 +196,6 @@ public class ProductsController {
 	@RequestMapping("/editProductsAllSubmit")
 	public String editProductsAllSubmit(ProductsQueryVo productsQueryVo)
 			throws Exception {
-		return "success";
+		return "redirect:/products/queryProducts.action";
 	}
 }
