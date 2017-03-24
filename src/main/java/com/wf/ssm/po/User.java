@@ -6,53 +6,72 @@ import java.util.List;
 import com.wf.ssm.common.persistence.DataEntity;
 
 public class User extends DataEntity<User> {
-    
 	private static final long serialVersionUID = -7408185747211659066L;
 
     private String username;
+    
+    private String sex;
+    
+    private Integer age;
 
     private Date birthday;
-
-    private String sex;
-
+    
+    private String mobile;
+    
     private String address;
     
     //用户创建的订单列表
   	private List<Orders> ordersList;
 
     public String getUsername() {
-        return username;
-    }
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public Date getBirthday() {
-        return birthday;
-    }
+	public String getSex() {
+		return sex;
+	}
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
-    public String getSex() {
-        return sex;
-    }
+	public Integer getAge() {
+		return age;
+	}
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
-    }
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public Date getBirthday() {
+		return birthday;
+	}
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-    
-    public List<Orders> getOrdersList() {
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public List<Orders> getOrdersList() {
 		return ordersList;
 	}
     

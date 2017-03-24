@@ -26,7 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String url = request.getRequestURI();
 		//判断url是否是公开 地址（实际使用时将公开 地址配置配置文件中）
 		//这里公开地址是登陆提交的地址
-		if(url.indexOf("login.action")>=0){
+		if(url.indexOf("login.action")>=0) {
 			//如果进行登陆提交，放行
 			return true;
 		}
@@ -35,8 +35,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		HttpSession session  = request.getSession();
 		//从session中取出用户身份信息
 		String username = (String) session.getAttribute("username");
-		
-		if(username != null){
+		if(username != null && url.endsWith(".action")) {
 			//身份存在，放行
 			return true;
 		}

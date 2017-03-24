@@ -7,10 +7,12 @@
     <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="sex" property="sex" jdbcType="CHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
   </resultMap>
   
   <sql id="Base_Column_List" >
-    id, username, birthday, sex, address
+    id, username, birthday, sex, address, age, mobile
   </sql>
   
   <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
