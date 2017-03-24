@@ -4,8 +4,8 @@
 	response.sendRedirect(request.getContextPath()+"/login.action");
 %>
 <html>
-<head>
-</head>
-<body>
-</body>
+	<head>
+	</head>
+	<body>
+	</body>
 </html>
