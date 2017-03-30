@@ -1,4 +1,4 @@
-package com.wf.ssm.po;
+package com.wf.ssm.entity;
 
 /**
  * <P>商品信息包装对象</P>

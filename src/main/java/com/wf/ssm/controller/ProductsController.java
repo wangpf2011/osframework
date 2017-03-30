@@ -25,9 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wf.ssm.controller.validation.ValidGroup1;
 import com.wf.ssm.exception.CustomException;
-import com.wf.ssm.po.Products;
-import com.wf.ssm.po.ProductsCustom;
-import com.wf.ssm.po.ProductsQueryVo;
+import com.wf.ssm.entity.Products;
+import com.wf.ssm.entity.ProductsCustom;
+import com.wf.ssm.entity.ProductsQueryVo;
 import com.wf.ssm.service.ProductsService;
 
 /**

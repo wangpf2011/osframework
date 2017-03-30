@@ -1,4 +1,4 @@
-package com.wf.ssm.po;
+package com.wf.ssm.entity;
 
 import com.wf.ssm.common.persistence.DataEntity;
 

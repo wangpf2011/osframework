@@ -17,8 +17,8 @@
   	<!-- parameterType传入包装对象(包装了查询条件)
   		resultType建议使用扩展对象
   	 -->
-  	<select id="findItemsList" parameterType="com.wf.ssm.po.ProductsQueryVo"
-  		 resultType="com.wf.ssm.po.ProductsCustom">
+  	<select id="findItemsList" parameterType="com.wf.ssm.entity.ProductsQueryVo"
+  		 resultType="com.wf.ssm.entity.ProductsCustom">
   		SELECT products.* FROM products  
   		<where>
   			<include refid="query_products_where"></include>

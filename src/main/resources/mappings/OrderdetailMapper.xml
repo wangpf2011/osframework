@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wf.ssm.mapper.OrderdetailMapper" >
-  <resultMap id="BaseResultMap" type="com.wf.ssm.po.Orderdetail" >
+  <resultMap id="BaseResultMap" type="com.wf.ssm.entity.Orderdetail" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="orders_id" property="ordersId" jdbcType="VARCHAR" />
     <result column="products_id" property="productsId" jdbcType="VARCHAR" />
@@ -24,13 +24,13 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   
-  <insert id="insert" parameterType="com.wf.ssm.po.Orderdetail" >
+  <insert id="insert" parameterType="com.wf.ssm.entity.Orderdetail" >
     insert into orderdetail (id, orders_id, products_id, products_num)
     values (#{id,jdbcType=VARCHAR}, #{ordersId,jdbcType=VARCHAR}, #{productsId,jdbcType=VARCHAR}, 
       #{productsNum,jdbcType=INTEGER})
   </insert>
   
-  <insert id="insertSelective" parameterType="com.wf.ssm.po.Orderdetail" >
+  <insert id="insertSelective" parameterType="com.wf.ssm.entity.Orderdetail" >
     insert into orderdetail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -62,7 +62,7 @@
     </trim>
   </insert>
   
-  <update id="updateSelective" parameterType="com.wf.ssm.po.Orderdetail" >
+  <update id="updateSelective" parameterType="com.wf.ssm.entity.Orderdetail" >
     update orderdetail
     <set >
       <if test="ordersId != null" >
@@ -78,7 +78,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
   
-  <update id="update" parameterType="com.wf.ssm.po.Orderdetail" >
+  <update id="update" parameterType="com.wf.ssm.entity.Orderdetail" >
     update orderdetail
     set orders_id = #{ordersId,jdbcType=VARCHAR},
     products_id = #{productsId,jdbcType=VARCHAR},

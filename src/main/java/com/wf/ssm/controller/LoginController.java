@@ -1,8 +1,6 @@
 package com.wf.ssm.controller;
 
 import java.util.List;
-import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wf.ssm.common.utils.IdGen;
-import com.wf.ssm.po.User;
+import com.wf.ssm.entity.User;
 import com.wf.ssm.service.UserService;
 
 @Controller

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.wf.ssm.po.User;
+import com.wf.ssm.entity.User;
 import com.wf.ssm.utils.ValidateUtils;
 
 public class ValidateTest {

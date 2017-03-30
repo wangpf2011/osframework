@@ -2,9 +2,9 @@ package com.wf.ssm.service;
 
 import java.util.List;
 
-import com.wf.ssm.po.Products;
-import com.wf.ssm.po.ProductsCustom;
-import com.wf.ssm.po.ProductsQueryVo;
+import com.wf.ssm.entity.Products;
+import com.wf.ssm.entity.ProductsCustom;
+import com.wf.ssm.entity.ProductsQueryVo;
 
 /**
  * <P>商品管理service</P>

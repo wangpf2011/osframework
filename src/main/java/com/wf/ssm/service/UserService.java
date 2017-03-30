@@ -1,6 +1,6 @@
 package com.wf.ssm.service;
 
-import com.wf.ssm.po.User;
+import com.wf.ssm.entity.User;
 
 /**
  * <P>用户注册service</P>

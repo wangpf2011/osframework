@@ -1,4 +1,4 @@
-package com.wf.ssm.po;
+package com.wf.ssm.entity;
 
 /**
  * <P>订单的扩展类</P>

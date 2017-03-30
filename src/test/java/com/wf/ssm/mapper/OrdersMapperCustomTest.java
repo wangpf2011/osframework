@@ -10,9 +10,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wf.ssm.po.Orders;
-import com.wf.ssm.po.OrdersCustom;
-import com.wf.ssm.po.User;
+import com.wf.ssm.entity.Orders;
+import com.wf.ssm.entity.OrdersCustom;
+import com.wf.ssm.entity.User;
 
 public class OrdersMapperCustomTest {
 

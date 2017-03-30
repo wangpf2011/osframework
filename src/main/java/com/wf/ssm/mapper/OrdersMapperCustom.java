@@ -2,9 +2,9 @@ package com.wf.ssm.mapper;
 
 import java.util.List;
 
-import com.wf.ssm.po.Orders;
-import com.wf.ssm.po.OrdersCustom;
-import com.wf.ssm.po.User;
+import com.wf.ssm.entity.Orders;
+import com.wf.ssm.entity.OrdersCustom;
+import com.wf.ssm.entity.User;
 
 /**
  * <p>Title: OrdersMapperCustom</p>

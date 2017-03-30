@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wf.ssm.mapper.ProductsMapper;
 import com.wf.ssm.mapper.ProductsMapperCustom;
-import com.wf.ssm.po.Products;
-import com.wf.ssm.po.ProductsCustom;
-import com.wf.ssm.po.ProductsQueryVo;
+import com.wf.ssm.entity.Products;
+import com.wf.ssm.entity.ProductsCustom;
+import com.wf.ssm.entity.ProductsQueryVo;
 import com.wf.ssm.service.ProductsService;
 
 /**

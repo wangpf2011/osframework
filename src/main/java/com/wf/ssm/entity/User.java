@@ -1,4 +1,4 @@
-package com.wf.ssm.po;
+package com.wf.ssm.entity;
 
 import java.util.Date;
 import java.util.List;

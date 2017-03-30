@@ -3,7 +3,7 @@ package com.wf.ssm.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wf.ssm.mapper.UserMapper;
-import com.wf.ssm.po.User;
+import com.wf.ssm.entity.User;
 import com.wf.ssm.service.UserService;
 
 /**
