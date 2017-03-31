@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.wf.ssm.common.persistence.DataEntity;
+import com.wf.ssm.common.utils.IdGen;
 
 public class User extends DataEntity<User> {
 	private static final long serialVersionUID = -7408185747211659066L;
@@ -41,7 +42,7 @@ public class User extends DataEntity<User> {
     
     //用户创建的订单列表
   	private List<Orders> ordersList;
-
+  	
     public String getUsername() {
 		return username;
 	}
@@ -104,5 +105,24 @@ public class User extends DataEntity<User> {
     
 	public void setOrdersList(List<Orders> ordersList) {
 		this.ordersList = ordersList;
+	}
+	
+	/**
+	 * 插入之前执行方法，需要手动调用
+	 */
+	@Override
+	public void preInsert(){
+		// 不限制ID为UUID，调用setIsNewRecord()使用自定义ID
+		if (!this.isNewRecord){
+			setId(IdGen.uuid());
+		}
+	}
+	
+	/**
+	 * 更新之前执行方法，需要手动调用
+	 */
+	@Override
+	public void preUpdate(){
+		
 	}
 }
