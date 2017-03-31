@@ -68,8 +68,8 @@
 							<td>${emp.email }</td>
 							<td>${emp.gender == 0? 'Female':'Male' }</td>
 							<td>${emp.departId.depatName }</td>
-							<td><a href="${pageContext.request.contextPath }/emps/editProducts.action?id=${emp.id}">Edit</a></td>
-							<td><a href="${pageContext.request.contextPath }/emps/editProducts.action?id=${emp.id}">Delete</a></td>
+							<td><a href="${pageContext.request.contextPath }/emps/edit.action?id=${emp.id}">Edit</a></td>
+							<td><a href="${pageContext.request.contextPath }/emps/del.action?id=${emp.id}">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</c:if>
