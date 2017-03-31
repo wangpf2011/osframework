@@ -42,7 +42,7 @@
 		-->
 		<div class="container">
 			<div class="form row">
-				<form class="form-horizontal col-sm-offset-3 col-md-offset-3" action="${pageContext.request.contextPath }/doRegister.action" id="register_form">
+				<form class="form-horizontal col-sm-offset-3 col-md-offset-3" action="${pageContext.request.contextPath }/doRegister" id="register_form">
 					<h3 class="form-title">Login to your account</h3>
 					<div class="col-sm-9 col-md-9">
 						<div class="form-group">

@@ -39,7 +39,7 @@ import com.wf.ssm.service.ProductsService;
  */
 @Controller
 // 为了对url进行分类管理 ，可以在这里定义根路径，最终访问url是根路径+子路径
-// 比如：商品列表：/products/queryProducts.action
+// 比如：商品列表：/products/queryProduct
 @RequestMapping("/products")
 public class ProductsController {
 
@@ -163,7 +163,7 @@ public class ProductsController {
 		productsService.updateProducts(id, products);
 
 		// 重定向到商品查询列表
-		return "redirect:/products/queryProducts.action";
+		return "redirect:/products/queryProducts";
 	}
 
 	// 批量删除 商品信息
@@ -171,7 +171,7 @@ public class ProductsController {
 	public String deleteProducts(Integer[] id) throws Exception {
 		// 调用service批量删除商品
 		// ...
-		return "redirect:/products/queryProducts.action";
+		return "redirect:/products/queryProducts";
 	}
 
 	// 批量修改商品页面，将商品信息查询出来，在页面中可以编辑商品信息
@@ -196,6 +196,6 @@ public class ProductsController {
 	@RequestMapping("/editProductsAllSubmit")
 	public String editProductsAllSubmit(ProductsQueryVo productsQueryVo)
 			throws Exception {
-		return "redirect:/products/queryProducts.action";
+		return "redirect:/products/queryProducts";
 	}
 }

@@ -3,11 +3,14 @@ package com.wf.ssm.rest.dao;
 import java.util.Collection;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.google.common.collect.Maps;
 import com.wf.ssm.common.utils.IdGen;
 import com.wf.ssm.rest.entity.Department;
 import com.wf.ssm.rest.entity.Employee;
 
+@Repository
 public class EmployeeDao {
 	private static Map<String, Employee> employees = null; 
 	

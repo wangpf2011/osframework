@@ -15,6 +15,7 @@
 
 	<!-- 可以扫描controller、service、...这里让扫描controller，指定controller的包 -->
 	<context:component-scan base-package="com.wf.ssm.controller"></context:component-scan>
+	<context:component-scan base-package="com.wf.ssm.rest.handler"></context:component-scan>
 	
 	<!-- 静态资源映射 
     <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/>-->
@@ -95,9 +96,10 @@
 		<!-- 登陆认证拦截器 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="login.action"/>
-			<mvc:exclude-mapping path="register.action"/>
-			<mvc:exclude-mapping path="doRegister.action"/>
+			<mvc:exclude-mapping path="login"/>
+			<mvc:exclude-mapping path="register"/>
+			<mvc:exclude-mapping path="doRegister"/>
+			<mvc:exclude-mapping path="doLogin"/>
 			<bean class="com.wf.ssm.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>

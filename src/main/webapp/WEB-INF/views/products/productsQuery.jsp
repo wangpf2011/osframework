@@ -10,18 +10,18 @@
 		<script type="text/javascript">
 			function editProductsAllSubmit(){
 				//提交form
-				document.itemsForm.action="${pageContext.request.contextPath }/products/editProductsAllSubmit.action";
+				document.itemsForm.action="${pageContext.request.contextPath }/products/editProductsAllSubmit";
 				document.itemsForm.submit();
 			}
 			function queryProducts(){
 				//提交form
-				document.itemsForm.action="${pageContext.request.contextPath }/products/queryProducts.action";
+				document.itemsForm.action="${pageContext.request.contextPath }/products/queryProducts";
 				document.itemsForm.submit();
 			}
 		</script>
 	</head>
 	<body> 
-		<form name="itemsForm" action="${pageContext.request.contextPath }/products/queryProducts.action" method="post">
+		<form name="itemsForm" action="${pageContext.request.contextPath }/products/queryProducts" method="post">
 			查询条件：
 			<table width="100%" border=1>
 				<tr>

@@ -39,7 +39,7 @@ public class LoginController {
 		// 在session中保存用户身份信息
 		session.setAttribute("username", username);
 		// 重定向到商品列表页面
-		return "redirect:/products/queryProducts.action";
+		return "redirect:/products/queryProducts";
 	}
 
 	//执行退出操作
@@ -49,7 +49,7 @@ public class LoginController {
 		session.invalidate();
 
 		// 重定向到商品列表页面
-		return "redirect:/login.action";
+		return "redirect:/login";
 	}
 	
 	//注册页面
@@ -73,16 +73,16 @@ public class LoginController {
 				// 输出错误信息
 				model.addAttribute("msg_"+objectError.getObjectName(), objectError.getDefaultMessage());
 			}
-			return "redirect:/register.action";*/
+			return "redirect:/register";*/
 			List<FieldError> errors = bindingResult.getFieldErrors();
 			for(FieldError fieldError : errors) {
 				model.addAttribute("msg_"+fieldError.getField(), fieldError.getDefaultMessage());
-				return "forward:/register.action";
+				return "forward:/register";
 			}
 		}
 		user.setId(IdGen.uuid());
 		//注册信息入库
 		userService.insert(user);
-		return "redirect:/login.action";
+		return "redirect:/login";
 	}
 }

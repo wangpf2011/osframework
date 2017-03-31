@@ -10,12 +10,12 @@
 		<script type="text/javascript">
 			function deleteProducts(){
 				//提交form
-				document.itemsForm.action="${pageContext.request.contextPath }/products/deleteProducts.action";
+				document.itemsForm.action="${pageContext.request.contextPath }/products/deleteProducts";
 				document.itemsForm.submit();
 			}
 			function queryProducts(){
 				//提交form
-				document.itemsForm.action="${pageContext.request.contextPath }/products/queryProducts.action";
+				document.itemsForm.action="${pageContext.request.contextPath }/products/queryProducts";
 				document.itemsForm.submit();
 			}
 		</script>
@@ -23,9 +23,9 @@
 	<body> 
 		当前用户：${username }，
 		<c:if test="${username!=null }">
-			<a href="${pageContext.request.contextPath }/logout.action">退出</a>
+			<a href="${pageContext.request.contextPath }/logout">退出</a>
 		</c:if>
-		<form name="itemsForm" action="${pageContext.request.contextPath }/products/queryProducts.action" method="post">
+		<form name="itemsForm" action="${pageContext.request.contextPath }/products/queryProducts" method="post">
 			查询条件：
 			<table width="100%" border=1>
 				<tr>
@@ -61,7 +61,7 @@
 						<td>${product.price }</td>
 						<td><fmt:formatDate value="${product.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 						<td>${product.detail }</td>
-						<td><a href="${pageContext.request.contextPath }/products/editProducts.action?id=${product.id}">修改</a></td>
+						<td><a href="${pageContext.request.contextPath }/products/editProducts?id=${product.id}">修改</a></td>
 					</tr>
 				</c:forEach>
 			</table>

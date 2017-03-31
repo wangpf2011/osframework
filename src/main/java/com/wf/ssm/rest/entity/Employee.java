@@ -24,6 +24,10 @@ public class Employee extends DataEntity<Employee> {
 	
 	private String gender;
 	
+	public Employee() {
+		super();
+	}
+	
 	public Employee(String id, String lastName, String email, String gender, Department depart) {
 		super(id);
 		this.lastName = lastName;

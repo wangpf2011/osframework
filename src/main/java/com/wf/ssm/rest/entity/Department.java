@@ -10,6 +10,10 @@ public class Department extends DataEntity<Department> {
 	
 	private String depatName;
 	
+	public Department() {
+		super();
+	}
+	
 	public Department(String id, String name) {
 		super(id);
 		this.depatName = name;

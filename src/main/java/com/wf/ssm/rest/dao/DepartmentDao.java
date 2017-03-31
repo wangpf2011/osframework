@@ -3,9 +3,12 @@ package com.wf.ssm.rest.dao;
 import java.util.Collection;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.google.common.collect.Maps;
 import com.wf.ssm.rest.entity.Department;
 
+@Repository
 public class DepartmentDao {
 	private static Map<String, Department> departments = null; 
 	

@@ -24,7 +24,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>
-    <url-pattern>*.action</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>springmvc_rest</servlet-name>
@@ -36,7 +36,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springmvc_rest</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>*.action</url-pattern>
   </servlet-mapping>
   
   <!-- 配置：把POST请求转换为DELETE/PUT请求-->
