@@ -21,7 +21,7 @@
 						<td><form:input path="lastName"/></td>
 					</tr>
 				</c:if>
-				<c:if test="${employee.id == null }">
+				<c:if test="${employee.id != null }">
 					<form:hidden path="id"/>
 					<input type="hidden" name="_method" value="PUT"/>
 				</c:if>

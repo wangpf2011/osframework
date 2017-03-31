@@ -43,7 +43,7 @@ public class EmployeeHandler {
 		return "rest/employeeInput";
 	}
 	
-	@RequestMapping(value="emp", method=RequestMethod.DELETE)
+	@RequestMapping(value="emp/{id}", method=RequestMethod.DELETE)
 	public String delete(@PathVariable("id") String id) {
 		employeeDao.delete(id);
 		return "redirect:/emps";

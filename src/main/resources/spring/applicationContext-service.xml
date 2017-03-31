@@ -17,4 +17,7 @@
 	
 	<!-- 用户的service -->
 	<bean id="userService" class="com.wf.ssm.service.impl.UserServiceImpl"/>
+	
+	<bean id="departmentDao" class="com.wf.ssm.rest.dao.DepartmentDao"/>
+	<bean id="employeeDao" class="com.wf.ssm.rest.dao.EmployeeDao"/>
 </beans>
