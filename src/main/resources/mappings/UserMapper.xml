@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wf.ssm.mapper.UserMapper" >
   <!-- 开启本mapper的namespace的二级缓存 -->
-  <cache/>
+  <!-- type：指定cache接口的实现类，mybatis默认使用PrepetualCache，如果要和ehcache整合，需要配置type为ehcache实现cache接口的类-->
+  <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
   
   <resultMap id="BaseResultMap" type="com.wf.ssm.entity.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
@@ -32,7 +33,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   
-  <insert id="insert" parameterType="com.wf.ssm.entity.User" >
+  <!-- 刷新缓存（清空缓存），在mapper的同一个namespace中，如果有其它insert、update、delete操作数据后需要刷新缓存，如果不执行刷新缓存会出现脏读。 -->
+  <!-- 设置statement配置中的flushCache="true"属性，默认情况下为true即刷新缓存，如果改成false则不会刷新。 -->
+  <insert id="insert" parameterType="com.wf.ssm.entity.User" flushCache="true">
     insert into user (id, username, birthday, sex, address, age, mobile, password)
     values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
       #{sex,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},

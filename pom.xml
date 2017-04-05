@@ -18,6 +18,7 @@
 		<druid.version>1.0.1</druid.version>
 		<shiro.version>1.2.3</shiro.version>
 		<ehcache.version>2.6.6</ehcache.version>
+		<mybatis-ehcache.version>1.1.0</mybatis-ehcache.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
 		<activiti.version>5.15.1</activiti.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -276,6 +277,11 @@
             <artifactId>ehcache-web</artifactId>  
             <version>2.0.4</version>
         </dependency>
+		<dependency>
+		    <groupId>org.mybatis.caches</groupId>
+		    <artifactId>mybatis-ehcache</artifactId>
+		    <version>${mybatis-ehcache.version}</version>
+		</dependency>
 		<!-- ehcache end -->
 		
 		<!-- security begin -->

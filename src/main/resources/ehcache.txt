@@ -1,0 +1,5 @@
+ehcache是一个分布式缓存框架（redis、memcached、ehcache），对缓存数据进行集中管理，一般采用集群方式。
+如果不使用分布式缓存，缓存的数据在各自服务单独存储，不方便开发。
+
+mybatis提供了一个cache接口，如果要实现自己的缓存逻辑，实现cache接口开发即可。
+mybatis和ehcache整合，mybatis和ehcache整合包中提供了一个cache接口的实现类org.mybatis.caches.ehcache.EhcacheCache
