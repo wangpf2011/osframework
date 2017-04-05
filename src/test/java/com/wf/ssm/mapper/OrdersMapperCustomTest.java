@@ -166,8 +166,6 @@ public class OrdersMapperCustomTest {
 //		//执行提交，清空UserMapper下边的二级缓存
 //		sqlSession3.commit();
 //		sqlSession3.close();
-		
-		
 
 		UserMapper userMapper2 = sqlSession2.getMapper(UserMapper.class);
 		// 第二次发起请求，查询id为1的用户

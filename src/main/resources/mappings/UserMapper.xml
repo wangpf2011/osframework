@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wf.ssm.mapper.UserMapper" >
+  <!-- 开启本mapper的namespace的二级缓存 -->
+  <cache/>
+  
   <resultMap id="BaseResultMap" type="com.wf.ssm.entity.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
@@ -16,7 +19,8 @@
     id, username, birthday, sex, address, age, mobile, password
   </sql>
   
-  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <!-- 在statment中设置useCache=false可以禁用当前select语句的二级缓存，即每次查询都会发出sql去查询，默认情况是true，即该sql使用二级缓存 -->
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" useCache="false">
     select 
     <include refid="Base_Column_List" />
     from user

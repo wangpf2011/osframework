@@ -14,6 +14,15 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.wf.ssm.common.persistence.DataEntity;
 import com.wf.ssm.common.utils.IdGen;
 
+/**
+ * 序列化Serializable，
+ * 
+ * 为了将缓存数据取出执行反序列化操作，因为二级缓存数据存储介质多种多样，不一定在内存
+ * 
+ * @version 1.0
+ * @author wangpf
+ * @date 2017年4月5日 下午10:40:06
+ */
 public class User extends DataEntity<User> {
 	private static final long serialVersionUID = -7408185747211659066L;
 	
