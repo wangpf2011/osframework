@@ -1,7 +1,12 @@
 package com.wf.ssm.entity;
 
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.wf.ssm.common.persistence.DataEntity;
+import com.wf.ssm.controller.validation.ValidGroup1;
 
 /**
  * <P>商品信息</P>
@@ -13,12 +18,18 @@ import com.wf.ssm.common.persistence.DataEntity;
 public class Products extends DataEntity<Products> {
 	private static final long serialVersionUID = -3453104973828470265L;
 
+	//校验名称在1到30字符中间
+    //message是提示校验出错显示的信息
+    //groups：此校验属于哪个分组，groups可以定义多个分组
+    @Size(min=1,max=30,message="{items.name.length.error}",groups={ValidGroup1.class})
 	private String name;
 
     private Float price;
 
     private String pic;
 
+    //非空校验
+    @NotNull(message="{items.createtime.isNUll}")
     private Date createtime;
 
     private String detail;

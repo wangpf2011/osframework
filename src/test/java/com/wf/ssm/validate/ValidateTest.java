@@ -1,4 +1,4 @@
-package com.wf.ssm.mapper;
+package com.wf.ssm.validate;
 
 import java.util.Date;
 
