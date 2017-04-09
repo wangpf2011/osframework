@@ -12,6 +12,7 @@ import com.wf.ssm.mapper.UserMapper;
 
 public class CacheTest {
 	private SqlSessionFactory sqlSessionFactory;
+	
 	private ApplicationContext applicationContext;
 
 	// 此方法是在执行testFindUserById之前执行

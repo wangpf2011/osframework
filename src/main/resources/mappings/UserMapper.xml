@@ -21,7 +21,7 @@
   </sql>
   
   <!-- 在statment中设置useCache=false可以禁用当前select语句的二级缓存，即每次查询都会发出sql去查询，默认情况是true，即该sql使用二级缓存 -->
-  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" useCache="false">
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" useCache="true">
     select 
     <include refid="Base_Column_List" />
     from user

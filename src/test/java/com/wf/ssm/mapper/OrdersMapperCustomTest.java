@@ -1,14 +1,12 @@
 package com.wf.ssm.mapper;
 
-import java.io.InputStream;
 import java.util.List;
-
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.wf.ssm.entity.Orders;
 import com.wf.ssm.entity.OrdersCustom;
@@ -17,11 +15,13 @@ import com.wf.ssm.entity.User;
 public class OrdersMapperCustomTest {
 
 	private SqlSessionFactory sqlSessionFactory;
+	
+	private ApplicationContext applicationContext;
 
 	// 此方法是在执行testFindUserById之前执行
 	@Before
 	public void setUp() throws Exception {
-		// 创建sqlSessionFactory
+		/*// 创建sqlSessionFactory
 
 		// mybatis配置文件
 		String resource = "SqlMapConfig.xml";
@@ -29,12 +29,18 @@ public class OrdersMapperCustomTest {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 
 		// 创建会话工厂，传入mybatis的配置文件信息
-		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);*/
+		
+		String[] xmlFiles = new String[]{
+				"classpath:/spring/applicationContext-dao.xml", 
+				"classpath:/spring/applicationContext-service.xml", 
+				"classpath:/spring/applicationContext-transaction.xml"};
+		applicationContext = new ClassPathXmlApplicationContext(xmlFiles);
+		sqlSessionFactory = (SqlSessionFactory) applicationContext.getBean("sqlSessionFactory");
 	}
 
 	@Test
 	public void testFindOrdersUser() throws Exception {
-
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// 创建代理对象
 		OrdersMapperCustom ordersMapperCustom = sqlSession
@@ -50,7 +56,6 @@ public class OrdersMapperCustomTest {
 
 	@Test
 	public void testFindOrdersUserResultMap() throws Exception {
-
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// 创建代理对象
 		OrdersMapperCustom ordersMapperCustom = sqlSession
@@ -66,7 +71,6 @@ public class OrdersMapperCustomTest {
 
 	@Test
 	public void testFindOrdersAndOrderDetailResultMap() throws Exception {
-
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// 创建代理对象
 		OrdersMapperCustom ordersMapperCustom = sqlSession
@@ -83,7 +87,6 @@ public class OrdersMapperCustomTest {
 
 	@Test
 	public void testFindUserAndItemsResultMap() throws Exception {
-
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// 创建代理对象
 		OrdersMapperCustom ordersMapperCustom = sqlSession
@@ -112,6 +115,5 @@ public class OrdersMapperCustomTest {
 			User user = orders.getUser();
 			System.out.println(user);
 		}
-
 	}
 }

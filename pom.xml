@@ -467,6 +467,13 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- TEST end -->
+		
+		<dependency>
+	       <groupId>org.apache.geronimo.specs</groupId>
+	       <artifactId>geronimo-servlet_3.0_spec</artifactId>
+	       <version>1.0</version>
+	       <scope>test</scope>
+	    </dependency>
 	</dependencies>
 	
 	<build>
