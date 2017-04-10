@@ -1,7 +1,6 @@
 package com.wf.ssm;
 
 import org.junit.runner.RunWith;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -12,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author wangpf
  */
 @RunWith(SpringJUnit4ClassRunner.class)    
-@ContextConfiguration(locations = {"classpath:/spring/applicationContext-dao.xml","classpath:/spring/applicationContext-service.xml","classpath:/spring/applicationContext-transaction.xml"})
-@ActiveProfiles("test")
-public class BaseJunit1Test {
+@ContextConfiguration(locations = {"classpath:/spring/applicationContext-dao.xml","classpath:/spring/applicationContext-service.xml","classpath:/spring/applicationContext-transaction.xml","classpath:/spring/springmvc.xml"})
+//@ActiveProfiles("test")
+public class ControllerBaseJunitTest {
       
 }
