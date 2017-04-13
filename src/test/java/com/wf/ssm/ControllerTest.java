@@ -30,10 +30,16 @@ public class ControllerTest extends ControllerBaseJunitTest  {
 	private MockMvc mockMvc;
 	
 	@Before  
-    public void setup() {   
+    public void setup() {
         this.mockMvc = webAppContextSetup(this.wac).build();  
     }
 	
+	/**
+     * perform：执行一个RequestBuilder请求，会自动执行SpringMVC的流程并映射到相应的控制器执行处理；
+     * andExpect：添加ResultMatcher验证规则，验证控制器执行完成后结果是否正确；
+     * andDo：添加ResultHandler结果处理器，比如调试时打印结果到控制台；
+     * andReturn：最后返回相应的MvcResult；然后进行自定义验证/进行下一步的异步处理；
+     */
     @Test  
     public void test0() throws Exception {
     	mockMvc.perform(post("/doLogin").param("username", "admin").param("password", "admin123")).andExpect(status().isOk())  

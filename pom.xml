@@ -473,6 +473,12 @@
 	       <version>1.0</version>
 	       <scope>test</scope>
 	    </dependency>
+	    <!-- hamcrest JUnit4单元测试assertThat -->
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest-all</artifactId>
+		    <version>1.3</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
