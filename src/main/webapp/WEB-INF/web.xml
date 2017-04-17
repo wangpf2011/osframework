@@ -14,6 +14,10 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <!-- 开启websocket服务    -->
+  <listener>  
+	  <listener-class>com.wf.ssm.netty.WebSocketLoader</listener-class>  
+  </listener>
   <servlet>
     <servlet-name>springmvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
