@@ -3,34 +3,28 @@ package com.wf.ssm.netty.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.FullHttpRequest;
+import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.wf.ssm.netty.util.Constants;
 
 /**
  * HTTP请求处理类
  * @author wangpf
  */
-public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
-    private static final Logger logger = LoggerFactory.getLogger(HttpRequestHandler.class);
-
-    private WebSocketServerHandshaker handshaker;
+public class HttpRequestHandler extends SimpleChannelInboundHandler<Object> {
     
-    private final String wsUri;
-    public HttpRequestHandler(String wsUri) {
-        this.wsUri = wsUri;
-    }
+    private static final Logger logger = LoggerFactory.getLogger(HttpRequestHandler.class);
+    private WebSocketServerHandshaker handshaker;
 
-    @SuppressWarnings("deprecation")
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
-        if(wsUri.equalsIgnoreCase(request.getUri())) {
-            //后续消息交给TextWebSocketFrameHandler处理
-            ctx.fireChannelRead(request.retain());
-        }else {
-            handleHttpRequest(ctx, request);
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+        if (msg instanceof FullHttpRequest) {
+            handleHttpRequest(ctx, (FullHttpRequest) msg);
+        } else if (msg instanceof WebSocketFrame) {
+            ctx.fireChannelRead(((WebSocketFrame) msg).retain());
         }
     }
 
@@ -54,8 +48,9 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
             return;
         }
         // Websocket 握手开始  
+        String webSocketURL = "ws://"+request.headers().get("host")+"/websocket";
         WebSocketServerHandshakerFactory handshakerFactory = new WebSocketServerHandshakerFactory(
-                Constants.WEBSOCKET_URL, null, true);
+                webSocketURL, null, true);
         handshaker = handshakerFactory.newHandshaker(request);
         if (handshaker == null) {
             WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());

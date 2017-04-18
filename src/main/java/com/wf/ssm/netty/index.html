@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聊天室,Netty,WebSocket">
+    <title>Netty WebSocket测试</title>
+    <script type="text/javascript">
+	    function startWebSocket() {
+			if (!window.WebSocket) {
+	            window.WebSocket = window.MozWebSocket;
+	        }
+			if (window.WebSocket) {
+				ws = new WebSocket("ws://localhost:9688/websocket");
+				ws.onmessage = function(evt) {  
+					var data = eval("(" + event.data + ")");
+	                console.log("onmessage data: " + JSON.stringify(data));
+	            };
+	            ws.onclose = function(evt) {  
+	                console.info(evt);  
+	                ws = null;
+	            };
+	            ws.onopen = function(evt) {
+	                console.info(evt);
+	                setInterval('sendMsg()',1000*10);
+	            };
+			}else {
+				alert("您的浏览器不支持WebSocket！");
+			}
+	    };
+	      
+	    function initWebSocket(){  
+	        startWebSocket();
+	    };
+	    
+	    function sendMsg(){
+		   if(!ws) {
+	           return;
+	       }
+		   var msg = "{'code':10001, msg:'0cdef9fbb9014b09b976754b4a7afa02,1a5cb928dbe941ad8c9f8575be04477f'}"
+	       ws.send(msg);
+	    }
+	    initWebSocket();
+    </script>
+</head>
+<body>
+	
+</body>
+</html>

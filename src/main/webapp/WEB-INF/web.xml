@@ -42,6 +42,16 @@
     <servlet-name>springmvc_rest</servlet-name>
     <url-pattern>*.action</url-pattern>
   </servlet-mapping>
+  <!-- WebServices设置 -->    
+    <servlet>    
+        <servlet-name>CXFServices</servlet-name>    
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>    
+        <load-on-startup>0</load-on-startup>    
+    </servlet>    
+    <servlet-mapping>    
+        <servlet-name>CXFServices</servlet-name>    
+        <url-pattern>/services/*</url-pattern>    
+    </servlet-mapping>
   
   <!-- 配置：把POST请求转换为DELETE/PUT请求-->
   <filter>

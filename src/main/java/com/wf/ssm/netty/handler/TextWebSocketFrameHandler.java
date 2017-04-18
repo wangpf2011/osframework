@@ -11,30 +11,33 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 对应Text消息的处理类
  * @author wangpf
  */
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
-    private static final Logger logger = LoggerFactory.getLogger(TextWebSocketFrameHandler.class);
     
+    private static final Logger logger = LoggerFactory.getLogger(TextWebSocketFrameHandler.class);
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    //private MonitorService monitorService = SpringContextHolder.getBean(MonitorService.class);
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame frame)
             throws Exception {
-        Channel incoming = ctx.channel();
-        for (Channel channel : channels) {
-            if (channel != incoming) {
-                // channel.writeAndFlush(new TextWebSocketFrame("[" + incoming.remoteAddress() + "]" + msg.text()));
-            } else {
-                channel.writeAndFlush(new TextWebSocketFrame("[服务器端返回]：" + frame.text()));
-                // output current message to context.
-                StringBuffer sb = new StringBuffer();
-                sb.append(incoming.remoteAddress()).append("->")
-                        .append(frame.text());
-                System.out.println(sb.toString());
-            }
+        Channel ch = ctx.channel();
+        JSONObject json = JSONObject.parseObject(frame.text());
+        // output current message to context.
+        StringBuffer sb = new StringBuffer();
+        sb.append(ch.remoteAddress())
+        .append("->")
+        .append(frame.text());
+        logger.info(sb.toString());
+        if("10001".equals(json.getString("code"))) {//车辆监控
+            /*String data = monitorService.vehicleStatus(json.getString("msg"));
+            ch.writeAndFlush(new TextWebSocketFrame(data));*/
+        	ch.writeAndFlush(new TextWebSocketFrame(frame.text()));
         }
     }
 
@@ -45,7 +48,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
             channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - "
                     + incoming.remoteAddress() + " 加入"));
         }*/
-        System.out.println("Client:" + incoming.remoteAddress() + "加入");
+        logger.info("Client:" + incoming.remoteAddress() + "加入");
         channels.add(ctx.channel());
     }
 
@@ -56,20 +59,20 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
             channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - "
                     + incoming.remoteAddress() + " 离开"));
         }*/
-        System.out.println("Client:" + incoming.remoteAddress() + "离开");
+        logger.info("Client:" + incoming.remoteAddress() + "离开");
         channels.remove(ctx.channel());
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println("Client:" + incoming.remoteAddress() + "在线");
+        logger.info("Client:" + incoming.remoteAddress() + "在线");
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println("Client:" + incoming.remoteAddress() + "掉线");
+        logger.info("Client:" + incoming.remoteAddress() + "掉线");
     }
 
     @Override

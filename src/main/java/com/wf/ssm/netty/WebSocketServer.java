@@ -6,7 +6,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import java.net.InetSocketAddress;
 
@@ -50,8 +49,8 @@ public class WebSocketServer extends BaseServer {
                     ch.pipeline().addLast(new HttpServerCodec());
                     ch.pipeline().addLast(new HttpObjectAggregator(64*1024));
                     ch.pipeline().addLast(new ChunkedWriteHandler());
-                    ch.pipeline().addLast(new HttpRequestHandler("/ws"));
-                    ch.pipeline().addLast(new WebSocketServerProtocolHandler("/ws"));
+                    ch.pipeline().addLast(new HttpRequestHandler());
+                    //ch.pipeline().addLast(new WebSocketServerProtocolHandler("/ws"));
                     ch.pipeline().addLast(new TextWebSocketFrameHandler());
                 }
             });
@@ -75,12 +74,10 @@ public class WebSocketServer extends BaseServer {
                 }
             }, 3, 50, TimeUnit.SECONDS);*/
             // 等待服务器 socket 关闭 。在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
-            cf.channel().closeFuture().sync();
+            //cf.channel().closeFuture().sync();
         }catch (Exception e) {
             logger.error("WebSocketServer start fail,", e);
             e.printStackTrace();
-        }finally {
-            shutdown();
         }
     }
 
