@@ -1,1 +1,1 @@
-为MES系统提供WebService接口
+wsdl2java -p com.lnint.jess.modules.ws.client -d e:\client -client http://localhost:8080/osframework/services/vehicleService?wsdl
