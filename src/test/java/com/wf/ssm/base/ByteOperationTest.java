@@ -8,7 +8,6 @@ import com.wf.ssm.utils.ByteUtils;
 public class ByteOperationTest {
 	@Test
     public void testByte() {
-		//ByteUtils.byteToInt(ByteUtils.convertBytes(ByteUtils.hexStringToBytes(wd1)));
 		String temp = "a079";
 		if(StringUtils.isEmpty(temp) || temp.length() != 4) return;
 
