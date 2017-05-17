@@ -18,7 +18,7 @@ public abstract class BaseServer implements Server {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     protected String host = "localhost";
-    protected int port = 8099;
+    protected int port = 9688;
 
     //protected DefaultEventLoopGroup defLoopGroup;
     protected NioEventLoopGroup bossGroup;
