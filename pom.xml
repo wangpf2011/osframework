@@ -1,7 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- 模型版本号 -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.lnint.ssm</groupId>
+	<!-- 群组ID：单位域名反写 -->
+	<groupId>com.wf.ssm</groupId>
+	<!-- 项目ID：一个单位只有一个域名，但是一个单位可以做多个项目 -->
 	<artifactId>osframework</artifactId>
+	<!-- 版本号：用于描述开发过程的阶段性标识 -->
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>osframework</name>
@@ -506,11 +510,15 @@
 		</dependency>
 	</dependencies>
 	
+	<!-- 构建 -->
 	<build>
 		<outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/classes/</outputDirectory>
+		<!-- 定义插件 -->
 		<plugins>
 			<!-- Compiler 插件, 设定JDK版本 -->
 			<plugin>
+				<!-- 定义具体的插件 -->
+				<!-- 声明插件的坐标 -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
@@ -639,32 +647,6 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.5.1</version>
 			</plugin>
-			
-			<!-- findbugs插件 
-			<plugin>  
-              <groupId>org.codehaus.mojo</groupId>  
-              <artifactId>findbugs-maven-plugin</artifactId>  
-              <version>2.5.2</version>  
-              <configuration>  
-                  <threshold>High</threshold>  
-                  <effort>Default</effort>  
-                  <findbugsXmlOutput>true</findbugsXmlOutput>  
-                  <findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>  
-              </configuration>  
-           </plugin>-->
-
-			<!-- checkstyle插件 
-			<plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-checkstyle-plugin</artifactId>  
-                <version>2.15</version>  
-            </plugin> 
-  
-            <plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-jxr-plugin</artifactId>  
-                <version>2.4</version>  
-            </plugin>-->
 		</plugins>
 	</build>
 	

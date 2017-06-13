@@ -1,0 +1,17 @@
+依赖范围scope，设置jar包的作用范围
+compile：最大范围，log4j
+test：源码不能用，测试代码能用，也不参与打包， junit
+provided 源码能用，测试代码能用，但不参与打包 servlet-api
+runtime：编译的时候不用，测试时也不用，只在运行时用 jdbc Driver
+
+
+依赖范围scope 用来控制依赖和编译，测试，运行的classpath的关系. 主要的是三种依赖关系如下：
+1.compile： 默认编译依赖范围。对于编译，测试，运行三种classpath都有效
+2.test：测试依赖范围。只对于测试classpath有效
+3.provided：已提供依赖范围。对于编译，测试的classpath都有效，但对于运行无效。因为由容器已经提供，例如servlet-api
+4.runtime:运行时提供。例如:jdbc驱动
+
+可选依赖，控制当前资源是否向下传递<optional> true/false 是否向下传递，true不往下传递
+排除依赖，设置当前依赖中是否使用间接依赖<exclusions><exclusion></exclusion></exclusions>
+依赖冲突：如果直接与间接依赖中包含有同一个坐标不同版本的资源依赖，以直接依赖的版本为准（就近原则）；如果直接依赖中包含有同一个坐标不同版本的资源依赖，以配置顺序下方的版本为准（就近原则）
+
