@@ -1,0 +1,22 @@
+1.继承
+继承为了消除重复，把很多相同的配置提取出来。
+例如：grouptId，version等
+父工程设置为被继承
+<packaging>pom</packaging>
+子工程继承父工程
+省略父工程中定义的坐标除访问名称中的所有设定，添加继承父工程
+<parent>
+	<groupId>…</groupId>
+	<artifactId>… </artifactId>
+	<version>… </version>
+	<relativePath>../父工程项目名</relativePath>
+</parent>
+
+
+2.聚合
+如果我们想一次构建多个项目模块，那我们就需要对多个项目模块进行聚合
+<modules>
+	<module>../子项目名称1</module>
+	<module>../子项目名称2</module>
+	 <module>../子项目名称3</module>
+</modules>
