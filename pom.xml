@@ -656,8 +656,8 @@
 	<!-- 开发者信息 -->
 	<developers>  
 		<developer>
-			<id>lnint</id>
-			<name>lnint</name>
+			<id>ssm</id>
+			<name>ssm</name>
 			<roles><role>Project lead</role></roles>
 			<timezone>+8</timezone>  
 		</developer>

@@ -1,9 +1,3 @@
-/*
- * Copyright &copy; 2011-2020 lnint Inc. All right reserved.
- * 
- * 修改信息：【与SVN提交信息一致】
- * @author wangpf 2016年1月7日 上午12:47:11
- */
 package com.wf.ssm.ws.interceptor;
 
 /**

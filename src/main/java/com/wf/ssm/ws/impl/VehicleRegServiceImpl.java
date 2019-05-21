@@ -16,7 +16,7 @@ import com.wf.ssm.ws.interceptor.WSUtils;
  * 车辆远程注册接口，MES系统调用
  * @author wangpf
  */
-@WebService(endpointInterface = "com.lnint.jess.modules.ws.VehicleRegService")
+@WebService(endpointInterface = "com.wf.ssm.modules.ws.VehicleRegService")
 public class VehicleRegServiceImpl implements VehicleRegService {
     /**
      * 日志对象
